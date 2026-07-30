@@ -290,4 +290,108 @@ document.addEventListener('DOMContentLoaded', () => {
       revealObserver.observe(el);
     });
   }
+
+  /* ==========================================================================
+     GOAL PLANNER CALCULATOR
+     ========================================================================== */
+  const plannerGoal = document.getElementById('planner-goal');
+  const plannerCost = document.getElementById('planner-cost');
+  const plannerYears = document.getElementById('planner-years');
+  const plannerInflation = document.getElementById('planner-inflation');
+  const plannerRisk = document.getElementById('planner-risk');
+
+  const lblCost = document.getElementById('val-cost');
+  const lblYears = document.getElementById('val-years');
+  const lblInflation = document.getElementById('val-inflation');
+
+  const resFutureCost = document.getElementById('res-future-cost');
+  const resSipAmount = document.getElementById('res-sip-amount');
+
+  const fillEquity = document.getElementById('alloc-equity-fill');
+  const fillDebt = document.getElementById('alloc-debt-fill');
+  const lblEquity = document.getElementById('lbl-equity-alloc');
+  const lblDebt = document.getElementById('lbl-debt-alloc');
+
+  if (plannerGoal && plannerCost && plannerYears && plannerInflation && plannerRisk) {
+    const goalDefaults = {
+      home: { cost: 5000000, years: 10, inflation: 6, risk: 'moderate' },
+      education: { cost: 2500000, years: 15, inflation: 7, risk: 'moderate' },
+      wedding: { cost: 3000000, years: 18, inflation: 6, risk: 'conservative' },
+      retirement: { cost: 15000000, years: 25, inflation: 6, risk: 'conservative' },
+      custom: { cost: 10000000, years: 5, inflation: 6, risk: 'moderate' }
+    };
+
+    function formatIndianCurrency(num) {
+      num = Math.round(num);
+      const str = num.toString();
+      const lastThree = str.substring(str.length - 3);
+      const otherNumbers = str.substring(0, str.length - 3);
+      const formattedOthers = otherNumbers !== '' ? otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + ',' : '';
+      return '₹' + formattedOthers + lastThree;
+    }
+
+    const updatePlanner = () => {
+      const cost = parseInt(plannerCost.value, 10);
+      const years = parseInt(plannerYears.value, 10);
+      const inflation = parseFloat(plannerInflation.value);
+      const risk = plannerRisk.value;
+
+      // Update control labels
+      lblCost.textContent = formatIndianCurrency(cost);
+      lblYears.textContent = `${years} ${years === 1 ? 'Year' : 'Years'}`;
+      lblInflation.textContent = `${inflation}%`;
+
+      // 1. Calculate Future Cost of Goal (Adjusted for Inflation)
+      const futureCost = Math.round(cost * Math.pow(1 + (inflation / 100), years));
+      resFutureCost.textContent = formatIndianCurrency(futureCost);
+
+      // 2. Calculate Required Monthly SIP
+      let annualRate = 11.5;
+      let equityAlloc = 70;
+
+      if (risk === 'aggressive') {
+        annualRate = 14;
+        equityAlloc = 90;
+      } else if (risk === 'moderate') {
+        annualRate = 11.5;
+        equityAlloc = 70;
+      } else if (risk === 'conservative') {
+        annualRate = 8;
+        equityAlloc = 40;
+      }
+
+      const r = annualRate / 12 / 100;
+      const n = years * 12;
+      const sipAmount = futureCost * r / (Math.pow(1 + r, n) - 1);
+
+      resSipAmount.textContent = formatIndianCurrency(Math.round(sipAmount));
+
+      // 3. Update Asset Split Visuals
+      const debtAlloc = 100 - equityAlloc;
+      fillEquity.style.width = `${equityAlloc}%`;
+      fillDebt.style.width = `${debtAlloc}%`;
+      lblEquity.textContent = `${equityAlloc}%`;
+      lblDebt.textContent = `${debtAlloc}%`;
+    };
+
+    // Listeners
+    plannerGoal.addEventListener('change', () => {
+      const key = plannerGoal.value;
+      if (goalDefaults[key]) {
+        plannerCost.value = goalDefaults[key].cost;
+        plannerYears.value = goalDefaults[key].years;
+        plannerInflation.value = goalDefaults[key].inflation;
+        plannerRisk.value = goalDefaults[key].risk;
+        updatePlanner();
+      }
+    });
+
+    plannerCost.addEventListener('input', updatePlanner);
+    plannerYears.addEventListener('input', updatePlanner);
+    plannerInflation.addEventListener('input', updatePlanner);
+    plannerRisk.addEventListener('change', updatePlanner);
+
+    // Initial load calculation
+    updatePlanner();
+  }
 });
