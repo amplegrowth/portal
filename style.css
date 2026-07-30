@@ -1,25 +1,25 @@
 /* ==========================================================================
-   AMPLWEALTH DESIGN SYSTEM & VARIABLES
+   AMPLEWEALTH DESIGN SYSTEM & VARIABLES
    ========================================================================== */
 :root {
-  /* Color Palette (Theme: Money & Wealth Growth) */
-  --bg-primary: #060a12;
-  --bg-secondary: #0c1322;
-  --bg-card: #121c30;
-  --bg-card-hover: #17243c;
+  /* Color Palette (Custom Theme: Jade Green & Champagne Gold) */
+  --bg-primary: #040812;
+  --bg-secondary: #091020;
+  --bg-card: #10192e;
+  --bg-card-hover: #15223e;
   
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #627288;
   
-  --accent: #10b981; /* Emerald Green (Money/Growth) */
-  --accent-secondary: #eab308; /* Wealth Gold (Harvest/Value) */
-  --accent-glow: rgba(16, 185, 129, 0.15);
+  --accent: #02c39a; /* Jade Green (Active growth & liquidity) */
+  --accent-secondary: #dfb15b; /* Champagne Gold (Stable wealth & premium harvest) */
+  --accent-glow: rgba(2, 195, 154, 0.12);
   
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(255, 255, 255, 0.15);
-  --glass-bg: rgba(12, 19, 34, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-color-hover: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(9, 16, 32, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.04);
   
   /* Fonts */
   --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -350,9 +350,9 @@ header.header-scrolled {
 }
 
 /* ==========================================================================
-   HERO / HOME SECTION
+   HOME SECTION
    ========================================================================== */
-.hero-section {
+.home-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -364,19 +364,19 @@ header.header-scrolled {
   gap: 4rem;
 }
 
-.hero-content {
+.home-content {
   flex: 1.1;
   max-width: 550px;
 }
 
-.hero-title {
+.home-title {
   font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -0.8px;
   margin-bottom: 1.25rem;
 }
 
-.hero-subtitle {
+.home-subtitle {
   font-size: 1.15rem;
   color: var(--text-secondary);
   margin-bottom: 2.25rem;
@@ -517,9 +517,9 @@ header.header-scrolled {
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  max-width: 800px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -577,6 +577,244 @@ header.header-scrolled {
     animation-timeline: view();
     animation-range: entry 10% entry 35%;
   }
+}
+
+/* ==========================================================================
+   GOAL PLANNER SECTION
+   ========================================================================== */
+.planner-section {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.planner-controls-card,
+.planner-results-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 40px;
+}
+
+.planner-group {
+  margin-bottom: 2rem;
+}
+
+.planner-group:last-child {
+  margin-bottom: 0;
+}
+
+.planner-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.planner-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.planner-label-row label {
+  margin-bottom: 0;
+}
+
+.planner-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.planner-select {
+  width: 100%;
+  background: rgba(6, 10, 18, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.planner-select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Custom Slider Styling */
+.planner-slider {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.planner-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  transition: transform var(--transition-fast);
+}
+
+.planner-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.planner-slider-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Results Layout */
+.results-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.results-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.results-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.result-stat-item {
+  background: rgba(6, 10, 18, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-stat-item.highlight {
+  border-color: var(--accent);
+  background: rgba(16, 185, 129, 0.03);
+}
+
+.result-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.result-stat-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.text-gold {
+  color: var(--accent-secondary);
+}
+
+.text-green {
+  color: var(--accent);
+}
+
+.result-stat-helper {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Allocation Visuals */
+.results-allocation h4 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.allocation-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.alloc-fill {
+  height: 100%;
+  transition: width var(--transition-normal);
+}
+
+.alloc-equity {
+  background: var(--accent);
+}
+
+.alloc-debt {
+  background: var(--accent-secondary);
+}
+
+.allocation-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-equity {
+  background: var(--accent);
+}
+
+.dot-debt {
+  background: var(--accent-secondary);
+}
+
+.btn-block {
+  width: 100%;
 }
 
 /* ==========================================================================
@@ -808,18 +1046,18 @@ header.header-scrolled {
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================================== */
 @media (max-width: 992px) {
-  .hero-section {
+  .home-section {
     flex-direction: column;
     text-align: center;
     padding-top: 130px;
     gap: 3rem;
   }
   
-  .hero-content {
+  .home-content {
     max-width: 100%;
   }
 
-  .hero-title {
+  .home-title {
     font-size: 2.6rem;
   }
 
@@ -833,6 +1071,11 @@ header.header-scrolled {
     gap: 1.5rem;
   }
 
+  .planner-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -840,7 +1083,7 @@ header.header-scrolled {
 }
 
 @media (max-width: 768px) {
-  .hero-title {
+  .home-title {
     font-size: 2.2rem;
   }
 
@@ -878,7 +1121,7 @@ header.header-scrolled {
 }
 
 @media (max-width: 480px) {
-  .hero-title {
+  .home-title {
     font-size: 1.9rem;
   }
 

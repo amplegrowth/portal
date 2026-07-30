@@ -40,7 +40,9 @@
       <!-- Nav Menu -->
       <nav class="nav-menu" id="nav-menu">
         <ul>
-          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#planner" class="nav-link">Goal Planner</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -48,17 +50,17 @@
   </header>
 
   <main>
-    <!-- Hero / Home Section -->
-    <section id="hero" class="hero-section">
-      <div class="hero-content">
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+      <div class="home-content">
         <div class="badge">Wealth Management Prototype</div>
-        <h1 class="hero-title">
+        <h1 class="home-title">
           Grow Your Wealth, <span class="gradient-text">Amplified</span>
         </h1>
-        <p class="hero-subtitle">
+        <p class="home-subtitle">
           Personalized investment suggestions to scale your assets. Scroll down to visualize your wealth growth journey.
         </p>
-        <div class="hero-ctas">
+        <div class="home-ctas">
           <a href="#contact" class="btn btn-primary">Start Growing Today</a>
         </div>
       </div>
@@ -66,8 +68,8 @@
       <!-- Scroll Transition Visualization -->
       <div class="growth-showcase-container">
         <div class="growth-frame">
-          <img src="static/image1.jpeg" alt="Initial Wealth Stage" class="growth-img img-stage1">
-          <img src="static/image2.jpeg" alt="Amplified Wealth Growth Stage" class="growth-img img-stage2">
+          <img src="static/invest.jpeg" alt="Initial Wealth Stage" class="growth-img img-stage1">
+          <img src="static/amplwealth.jpeg" alt="Amplified Wealth Growth Stage" class="growth-img img-stage2">
 
           <div class="growth-overlay">
             <span class="growth-tag tag-stage1">Initial Capital</span>
@@ -80,37 +82,206 @@
       </div>
     </section>
 
-    <!-- Investment Ideas / Pillars Section (Simplified) -->
-    <section id="suggestions" class="suggestions-section scroll-reveal">
+    <!-- Services Section -->
+    <section id="services" class="suggestions-section scroll-reveal">
       <div class="section-container">
-        <h2 class="section-title">Growth Pathways</h2>
-        <p class="section-subtitle">A simple preview of smart investment strategies engineered for maximum acceleration.
-        </p>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">We distribute and consult on a wide array of wealth management products, tailored
+          for long-term compound growth.</p>
 
         <div class="pillars-grid">
+          <!-- Mutual Funds -->
           <div class="pillar-card">
             <div class="pillar-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"></line>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
-            <h3>Diversified Equities</h3>
-            <p>Capturing global growth opportunities through high-performance index allocation and sector-focused
-              equities.</p>
+            <h3>Mutual Funds</h3>
+            <p>Access systematic (SIP) or lumpsum plans investing in diversified equity, debt, gold, and thematic
+              sectors.</p>
           </div>
 
+          <!-- PMS -->
           <div class="pillar-card">
             <div class="pillar-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
+                <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+                <path d="M22 12A10 10 0 0 0 12 2v10z" />
               </svg>
             </div>
-            <h3>Compound Yield</h3>
-            <p>Reinvesting dividends and interest to utilize the mathematical advantage of compounded asset value.</p>
+            <h3>Portfolio Management (PMS)</h3>
+            <p>Professional, concentrated stock portfolios managed by certified fund managers to target higher long-term
+              alpha.</p>
+          </div>
+
+          <!-- AIF -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9" rx="1" />
+                <rect x="14" y="3" width="7" height="5" rx="1" />
+                <rect x="14" y="12" width="7" height="9" rx="1" />
+                <rect x="3" y="16" width="7" height="5" rx="1" />
+              </svg>
+            </div>
+            <h3>Alternative Investments (AIF)</h3>
+            <p>Bespoke allocations in private equity, venture capital, and real estate funds for sophisticated growth
+              strategies.</p>
+          </div>
+
+          <!-- Bonds -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="4" />
+                <line x1="8" y1="2" x2="8" y2="4" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <h3>Bonds & Fixed Income</h3>
+            <p>Predictable capital preservation with sovereign gold bonds, corporate debentures, fixed-deposits and
+              high-yield secondary market bonds.</p>
+          </div>
+
+          <!-- Life Insurance -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3>Life Insurance</h3>
+            <p>Secure your family's future and protect your wealth with term plans, ULIPs, and savings-oriented life
+              insurance products.</p>
+          </div>
+
+          <!-- Health Insurance -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+            </div>
+            <h3>Health Insurance</h3>
+            <p>Shield your capital from unexpected medical expenses with comprehensive individual, family floater, and
+              critical illness plans.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Goal Planner Section -->
+    <section id="planner" class="planner-section scroll-reveal">
+      <div class="section-container">
+        <h2 class="section-title">Goal Planner</h2>
+        <p class="section-subtitle">Plan for life's milestones. Estimate the future cost of your goals and calculate the
+          monthly savings required to reach them.</p>
+
+        <div class="planner-grid">
+          <!-- Calculator Controls -->
+          <div class="planner-controls-card">
+            <div class="planner-group">
+              <label for="planner-goal">Select Financial Goal</label>
+              <select id="planner-goal" class="planner-select">
+                <option value="home" selected>Dream Home</option>
+                <option value="education">Child's Higher Education</option>
+                <option value="wedding">Child's Wedding</option>
+                <option value="retirement">Retirement Fund</option>
+                <option value="custom">Custom Wealth Target</option>
+              </select>
+            </div>
+
+            <div class="planner-group">
+              <div class="planner-label-row">
+                <label for="planner-cost">Today's Estimated Cost</label>
+                <span class="planner-value" id="val-cost">₹50,00,000</span>
+              </div>
+              <input type="range" id="planner-cost" min="100000" max="50000000" step="50000" value="5000000"
+                class="planner-slider">
+              <div class="planner-slider-range">
+                <span>₹1 L</span>
+                <span>₹5 Cr</span>
+              </div>
+            </div>
+
+            <div class="planner-group">
+              <div class="planner-label-row">
+                <label for="planner-years">Time Horizon (Years)</label>
+                <span class="planner-value" id="val-years">10 Years</span>
+              </div>
+              <input type="range" id="planner-years" min="1" max="40" step="1" value="10" class="planner-slider">
+              <div class="planner-slider-range">
+                <span>1 Yr</span>
+                <span>40 Yrs</span>
+              </div>
+            </div>
+
+            <div class="planner-group">
+              <div class="planner-label-row">
+                <label for="planner-inflation">Expected Inflation Rate</label>
+                <span class="planner-value" id="val-inflation">6%</span>
+              </div>
+              <input type="range" id="planner-inflation" min="0" max="15" step="0.5" value="6" class="planner-slider">
+              <div class="planner-slider-range">
+                <span>0%</span>
+                <span>15%</span>
+              </div>
+            </div>
+
+            <div class="planner-group">
+              <label for="planner-risk">Risk Profile / Portfolios</label>
+              <select id="planner-risk" class="planner-select">
+                <option value="aggressive">Aggressive (14% Expected Yield)</option>
+                <option value="moderate" selected>Moderate (11.5% Expected Yield)</option>
+                <option value="conservative">Conservative (8% Expected Yield)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Calculator Results -->
+          <div class="planner-results-card">
+            <div class="results-header">
+              <h3>Your Growth Blueprint</h3>
+              <p>Based on your selected timeline and portfolio risk profile.</p>
+            </div>
+
+            <div class="results-stats">
+              <div class="result-stat-item">
+                <span class="result-stat-label">Future Cost of Goal</span>
+                <span class="result-stat-value text-gold" id="res-future-cost">₹89,54,000</span>
+                <span class="result-stat-helper">Adjusted for inflation</span>
+              </div>
+
+              <div class="result-stat-item highlight">
+                <span class="result-stat-label">Required Monthly SIP</span>
+                <span class="result-stat-value text-green" id="res-sip-amount">₹42,000</span>
+                <span class="result-stat-helper">Assuming regular monthly savings</span>
+              </div>
+            </div>
+
+            <div class="results-allocation">
+              <h4>Recommended Asset Split</h4>
+              <div class="allocation-bar">
+                <div class="alloc-fill alloc-equity" id="alloc-equity-fill" style="width: 70%;"></div>
+                <div class="alloc-fill alloc-debt" id="alloc-debt-fill" style="width: 30%;"></div>
+              </div>
+              <div class="allocation-legend">
+                <span class="legend-item"><span class="legend-dot dot-equity"></span>Equity: <strong
+                    id="lbl-equity-alloc">70%</strong></span>
+                <span class="legend-item"><span class="legend-dot dot-debt"></span>Debt: <strong
+                    id="lbl-debt-alloc">30%</strong></span>
+              </div>
+            </div>
+
+            <a href="#contact" class="btn btn-primary btn-block">Request Suggestions</a>
           </div>
         </div>
       </div>
