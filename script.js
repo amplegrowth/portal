@@ -315,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (plannerGoal && plannerCost && plannerYears && plannerInflation && plannerRisk) {
     const goalDefaults = {
       home: { cost: 5000000, years: 10, inflation: 6, risk: 'moderate' },
+      realestate: { cost: 7500000, years: 8, inflation: 7, risk: 'moderate' },
       education: { cost: 2500000, years: 15, inflation: 7, risk: 'moderate' },
       wedding: { cost: 3000000, years: 18, inflation: 6, risk: 'conservative' },
       retirement: { cost: 15000000, years: 25, inflation: 6, risk: 'conservative' },
