@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const imgStage2 = document.querySelector('.img-stage2');
   const tagStage1 = document.querySelector('.tag-stage1');
   const tagStage2 = document.querySelector('.tag-stage2');
-  const mainContact = 'maddiashok@gmail.com';
+  const mainContact = 'myamplegrowth@gmail.com';
 
   /* ==========================================================================
      MOBILE NAVIGATION
@@ -203,43 +203,29 @@ document.addEventListener('DOMContentLoaded', () => {
       submitText.textContent = 'Submitting...';
       spinner.style.display = 'inline-block';
 
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitText.textContent = 'Request Suggestions';
-        
-        const formData = {
-          name: inputs.name.value,
-          email: inputs.email.value,
-          message: inputs.message.value
-        };
-        
-        const emailData = {
-          to: mainContact,
-          subject: 'New Contact Form Submission',
-          body: `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
-        };
-        
-        fetch('https://api.example.com/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(emailData),
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Success:', data);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+      const emailPayload = {
+        name: inputs.name.value,
+        email: inputs.email.value,
+        message: inputs.message.value,
+        _subject: 'New Consultation Request - AmplWealth'
+      };
 
-        spinner.style.display = 'none';
+      fetch(`https://formsubmit.co/ajax/${mainContact}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(emailPayload),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
         
         // Reset success banner styling and show it
         successMsg.style.display = 'flex';
@@ -260,7 +246,25 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           successMsg.style.display = 'none';
         }, 5000);
-      }, 1500);
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+        
+        // Show error banner with fallback mailto link
+        successMsg.style.display = 'flex';
+        successMsg.style.borderColor = 'rgba(239, 68, 68, 0.25)';
+        successMsg.style.color = '#ef4444';
+        successMsg.style.background = 'rgba(239, 68, 68, 0.08)';
+        successMsg.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span>Submission error. Please email us directly at <a href="mailto:${mainContact}" style="color: inherit; text-decoration: underline;">${mainContact}</a>.</span>
+        `;
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitText.textContent = 'Request Suggestions';
+        spinner.style.display = 'none';
+      });
     } else {
       const firstInvalid = Object.values(inputs).find(input => input.classList.contains('invalid'));
       if (firstInvalid) firstInvalid.focus();
